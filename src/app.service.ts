@@ -15,10 +15,10 @@ export class AppService {
 
     this.packingLine();
 
-    return this.output;
+    return this.output.slice(0, -1);
   }
 
-  private setLine(items: number): void {
+  private setLine(items: string): void {
     this.items = items.toString().split("");
     this.output = ""
   }
@@ -49,8 +49,9 @@ export class AppService {
         pos++;
       }
     }
+    
+    this.output = this.output + '' + out + '/';
     console.log(this.output);
-    this.output = this.output +'' +out + '/';
    
     this.packingLine();
   }
