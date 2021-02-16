@@ -50,7 +50,7 @@ export class AppService {
       }
     }
     console.log(this.output);
-    this.output = this.output +'' +out + '|';
+    this.output = this.output +'' +out + '/';
    
     this.packingLine();
   }
