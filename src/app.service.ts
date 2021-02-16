@@ -16,8 +16,8 @@ export class AppService {
     this.setLine(line.items);
 
     this.packingLine();
-
-    return this.output.slice(0, -1) + ' => ' + this.usedBoxes + ' used boxes';
+    
+    return this.usedBoxes > 0 ? this.output.slice(0, -1) + ' => ' + this.usedBoxes + ' used boxes' : '0 used boxes';
   }
 
   private setLine(items: string): void {
@@ -37,6 +37,11 @@ export class AppService {
   private packItem(): void {
     let item = this.items.shift();
     let box = +item;
+
+    if (!box) {
+      return this.packingLine();
+    } 
+
     let out = item;
 
     let pos = 0;
@@ -51,11 +56,13 @@ export class AppService {
       } else {
         pos++;
       }
-    }
+    }  
     
-    this.output = this.output + '' + out + '/';
-    this.usedBoxes++;
-    console.log(this.output);
+    
+      this.output = this.output + '' + out + '/';
+      this.usedBoxes++;
+      console.log(this.output);
+    
    
     this.packingLine();
   }
