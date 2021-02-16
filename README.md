@@ -19,6 +19,9 @@ $ npm install
 $ npm run start
 ```
 
+
+> http://localhost:3000 
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
