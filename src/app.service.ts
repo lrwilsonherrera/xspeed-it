@@ -9,18 +9,21 @@ export class AppService {
 
   private output: string = "";
 
+  private usedBoxes = 0;
+
   optimize(line: LineOfItemsDto): string{
     
     this.setLine(line.items);
 
     this.packingLine();
 
-    return this.output.slice(0, -1);
+    return this.output.slice(0, -1) + ' => ' + this.usedBoxes + ' used boxes';
   }
 
   private setLine(items: string): void {
     this.items = items.toString().split("");
     this.output = ""
+    this.usedBoxes = 0;
   }
 
   private packingLine(): void {
@@ -51,6 +54,7 @@ export class AppService {
     }
     
     this.output = this.output + '' + out + '/';
+    this.usedBoxes++;
     console.log(this.output);
    
     this.packingLine();
